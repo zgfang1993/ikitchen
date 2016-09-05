@@ -4,7 +4,7 @@
 .bar.bar-stable{
   background: #fff;
 }
-.banner .row,.banner .row .col,.banner1,.banner1 .row,.banner1 .row .col{
+.banner .row,.banner .row .col,.banner1,.banner1 .col{
 	padding: 0;
 }
 .add{
@@ -58,4 +58,33 @@ ion-content{
 	color: #3f3e3a;
     text-align: center;
     padding: 10px 0;
+}
+
+/*popular*/
+/*.weekly_popu .item-avatar{
+	width: 60px;
+	height: 80px;
+	border: none;
+	background: none;
+	padding: 0 ;
+}
+.weekly_popu .item-avatar img{
+	max-width: 50px;
+	max-height: 50px;
+	/*position: absolute;
+	right: 5px;
+	top:50px;*/
+}*/
+.weekly_popu .bb{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	position: absolute;
+	top:0;
+	right: 0;
+}
+.weekly_popu .bb img{
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 25px;
 }
