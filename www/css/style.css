@@ -61,30 +61,112 @@ ion-content{
 }
 
 /*popular*/
-/*.weekly_popu .item-avatar{
-	width: 60px;
-	height: 80px;
-	border: none;
-	background: none;
-	padding: 0 ;
+.weekly_popu .item h2{
+	margin-bottom: 12px;
 }
-.weekly_popu .item-avatar img{
-	max-width: 50px;
-	max-height: 50px;
-	/*position: absolute;
-	right: 5px;
-	top:50px;*/
-}*/
-.weekly_popu .bb{
+.weekly_popu .avatar{
 	width: 50px;
 	height: 50px;
-	padding: 0;
 	position: absolute;
-	top:0;
-	right: 0;
+	right: 18px;
+	top:8px;
 }
-.weekly_popu .bb img{
+.weekly_popu .avatar img{
 	max-width: 50px;
 	max-height: 50px;
 	border-radius: 25px;
 }
+.weekly_popu .avatar h4{
+	text-align: center;
+}
+
+/* 创建菜谱 */
+/* .create .cancel,.create .next{
+	color: #ff726d;
+	text-decoration: none;
+}
+.create .title{
+	color: #3b3a36;
+} */
+.create a.cancel,.create a.next{
+	color: #ff726d;
+	text-decoration: none;
+	
+}
+.create a.cancel{
+	float: left;
+	margin-left: 10px;
+}
+.create a.next{
+	float: right;
+	margin-right: 10px;
+}
+
+.createfoot.bar-assertive,.createfoot.bar.bar-assertive.bar-footer{
+	background: #fb6650;
+}
+
+.create .writename{
+	margin:20px auto;
+	color: #959691;
+    font-size: 18px;
+}
+.create .writename .cp{
+	color: #959691;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.create input{
+	background: #f7f6f2;
+}
+/* .foot{
+	background: #fb6650;
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	bottom: 0;
+}
+.foot .title{
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	line-height: 40px;
+}
+ */
+
+ /*创建菜谱详情 detail*/
+ .detail .cover{
+ 	width: 100%;
+ 	height: 200px;
+ 	background: #ebebe3;
+ 	line-height: 200px;
+    text-align: center;
+ }
+ .detail .cover .cpfm{
+ 	margin: 0 auto;
+ }
+@font-face {font-family: 'iconfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shipu:before { content: "\e6a0"; line-height: 1.5;     font-size: 20px;}
+.icon-shipu1:before { content: "\e600"; line-height: 1.5;     font-size: 20px;}
+.icon-iconcaipu:before { content: "\e604"; line-height: 1.5;     font-size: 20px;}
+.icon-fangzi:before { content: "\e739"; line-height: 1.5;     font-size: 20px;}
+.icon-dianpu:before { content: "\e608"; line-height: 1.5;    font-size: 20px;}
+.icon-navhomeicon:before { content: "\e608"; line-height: 1.5;    font-size: 20px;}
+.icon-dianpushouquanxiaofangzi:before { content: "\e608"; line-height: 1.5;    font-size: 20px;}
+.icon-iconfontshouye:before { content: "\e601"; line-height: 1.5;    font-size: 20px;}

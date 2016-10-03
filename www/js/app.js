@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider
+  $stateProvider 
 
   .state('tab', {  //下方导航栏
     url: '/tab',
@@ -37,26 +37,35 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-  .state('tab.ikitchen-popular', {
+//流行菜谱
+  .state('ikitchen-popular', {
     url: '/ikitchen/weekly_popular',
-    views: {
-      'tab-ikitchen': {
-        templateUrl: 'templates/ikitchen-popular.html',
-        controller: 'PopulCtrl'
-      }
-    }
+    templateUrl: 'templates/ikitchen-popular.html',
+    controller: 'PopulCtrl'
+  })
+//创建菜谱名
+  .state('create', {
+    url: '/create/name',
+    templateUrl: 'templates/create-name.html',
+    controller: 'CreateNameCtrl'
+  })
+//创建菜谱详情
+  .state('create-detail', {
+    url: '/create/detail',
+    templateUrl: 'templates/create-detail.html',
+    controller: 'CreateNameCtrl'
   })
 
   .state('tab.chats', {
       url: '/chats',
       views: {
-        'tab-chats': {
+        'tab-create': {
           templateUrl: 'templates/tab-chats.html',
           controller: 'ChatsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
+  .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
         'tab-chats': {

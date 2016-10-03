@@ -1,0 +1,34 @@
+<ion-header-bar align-title="center" class="bar-light create">
+
+	<h1 class="title">
+		<a href="#" class="cancel" ng-click="show()">取消</a>
+		菜谱名称
+		<a href="#/create/detail" class="next">下一步</a>
+	</h1>
+   
+</ion-header-bar>
+
+<ion-content class="create">
+
+	<div class="row" ng-if="isshow">
+		<div class="writename" ng-click="show()" >
+			<div class="cp">在此添加菜谱名称</div>
+			<div class="cp">(创建菜谱的人都是天使)</div>
+		</div>
+	</div>
+
+	<div class="row" ng-if="!isshow">
+		<div class="writename">
+			<input type="text" class="" ng-model="menu.name" placeholder="" required />{{menu.name}}
+		</div>
+	</div>
+
+</ion-content>
+
+<ion-footer-bar align-title="center" class="bar-assertive createfoot">
+  <h1 class="title">草稿箱</h1>
+</ion-footer-bar> 
+
+<!-- <div class="foot">
+	<h1 class="title">草稿箱</h1>
+</div> -->
