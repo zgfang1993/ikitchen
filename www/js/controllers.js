@@ -1,6 +1,28 @@
 angular.module('starter.controllers', [])
 
 .controller('ikitchenCtrl', function($scope) {})
+//菜谱搜索列表
+.controller('MenuSearchCtrl', function($scope,$ionicModal) {
+//浮动框//
+	$scope.contacts = [
+	    { name: 'Gordon Freeman' },
+	    { name: 'Barney Calhoun' },
+	    { name: 'Lamarr the Headcrab' },
+	  ];
+
+	  $ionicModal.fromTemplateUrl('templates/modal.html', {
+	    scope: $scope
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	  });
+	  
+	  $scope.createContact = function(u) {        
+	    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+	    $scope.modal.hide();
+	  };
+
+//浮动框//
+})
 //创建菜谱详情
 .controller('CreateDetailCtrl', function($scope) {})
 
@@ -15,7 +37,7 @@ angular.module('starter.controllers', [])
 
 
 	$http({
-		url:'/js/popudata.json',
+		url:'js/popudata.json',
 		method:'GET'
 	}).success(function(data,header,config,status){
 		//响应成功

@@ -28,7 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/tabs.html'
   })
 
-  .state('tab.ikitchen', {
+  .state('tab.ikitchen', { //首页
     url: '/ikitchen',
     views: {
       'tab-ikitchen': {
@@ -55,8 +55,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/create-detail.html',
     controller: 'CreateNameCtrl'
   })
+//菜谱
+  .state('menu-classification', {
+    url: '/menu/menu-classification',
+    templateUrl: 'templates/menu-classification.html'
+    //controller: 'CreateNameCtrl'
+  })
+//菜谱搜索列表
+  .state('menu-search', {
+    url: '/menu/menu-search',
+    templateUrl: 'templates/menu-list.html',
+    controller: 'MenuSearchCtrl'
+  });
 
-  .state('tab.chats', {
+ /* .state('tab.chats', {
       url: '/chats',
       views: {
         'tab-create': {
@@ -83,7 +95,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
-  });
+  });*/
 
 
   $urlRouterProvider.otherwise('/tab/ikitchen');
