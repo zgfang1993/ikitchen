@@ -1,33 +1,31 @@
-<ion-header-bar align-title="center" class="bar-stable banner">
+<!--首页  -->
+<ion-header-bar align-title="center" class="bar-stable banner ikitchen">
 
-  <div class="row">
-    <div class="col col-10">
-      <div class="add">
-       </div>
-    </div>
-    <div class="col col-80">
-      <input class="search" type="text" placeholder="Search">
-    </div>
-    <div class="col col-10">
-      <div class="basket">
-      </div>
-    </div>
+  <div class="bar bar-header item-input-inset">
+
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input autofocus class="search" type="search" placeholder="菜谱、食材" ng-click="toSearchPage()"> <!--跳转到搜索页-->
+    </label>
+
+    <a class="button button-clear iconfont icon-basketorganicfoodv1codropswojciechzasina" ng-click="" href="#/menu/menu-search-page">
+    </a>
+
   </div>
-   
 </ion-header-bar>
   
 <ion-content>
-  <!--1-->
-  <div class="row banner1">
-      <div class="col col-50 cookiebook">
-        <a href="#/ikitchen/weekly_popular">
-          <img src="img/img1.png" alt="">
-        </a>
-      </div>
-      <div class="col col-50 attention">
-          <img src="img/img2.png" alt="">
-      </div>
-  </div>
+    <!--1. 本周流行菜谱 关注动态-->
+    <div class="row banner1">
+        <div class="col col-50 cookiebook">
+          <a href="#/ikitchen/weekly_popular">
+            <img src="img/img1.png" alt="">
+          </a>
+        </div>
+        <div class="col col-50 attention">
+            <img src="img/img2.png" alt="">
+        </div>
+    </div>
   <!--2.滚动图-->
   <ion-slide-box class="scoller">
     <ion-slide>

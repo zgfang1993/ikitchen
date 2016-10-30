@@ -1,6 +1,42 @@
 angular.module('starter.controllers', [])
 
-.controller('ikitchenCtrl', function($scope) {})
+
+.directive('autofocus', ['$timeout', function($timeout) {
+  return {
+    restrict: 'A',
+    link : function($scope, $element) {
+      $timeout(function() {
+        $element[0].focus();
+      });
+    }
+  }
+}])
+
+.controller('ikitchenCtrl', function($scope,$state) {
+	$scope.toSearchPage = function(){
+		$state.go('menu-search-page');
+	}
+})
+//菜谱搜索页面
+.controller('SearchPageCtrl', function($scope,$state,$ionicHistory) {
+	$scope.returnpage =function(){
+		$scope.searchval = "";
+		$state.go("tab.ikitchen");
+	}
+
+
+	$scope.searchval = "";
+	$scope.search_show = false;
+	$scope.search_change = function(){
+		if($scope.searchval == ""){
+			$scope.search_show = false;
+		}else{
+			$scope.search_show = true;
+		}
+    // $scope.search_show = $scope.searchval?false:true;
+
+	}
+})
 //菜谱搜索列表
 .controller('MenuSearchCtrl', function($scope,$ionicModal) {
 //浮动框//
@@ -15,8 +51,8 @@ angular.module('starter.controllers', [])
 	  }).then(function(modal) {
 	    $scope.modal = modal;
 	  });
-	  
-	  $scope.createContact = function(u) {        
+
+	  $scope.createContact = function(u) {
 	    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
 	    $scope.modal.hide();
 	  };

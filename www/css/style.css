@@ -1,31 +1,23 @@
 *{
 	font-family: "微软雅黑";
 }
+.color-o,.button.button-clear.color-o{
+	color: #ff726d; 
+}
 /*首页*/
+ion-header-bar.ikitchen{
+	padding: 0;
+}
 .bar.bar-stable{
   background: #fff;
 }
-.banner .row,.banner .row .col,.banner1,.banner1 .col{
+.banner1,.banner1 .col{
 	padding: 0;
 }
-.add{
-	width: 18px;
-	height: 18px;
-	background: url(../img/icon.png);
-	margin-top: 5px;
-}
-.search{
-	width: 268px;
-	height: 28px;
-	border-radius: 5px;
-	background: #f2f2f0;
+
+.sikitchen .search{
+	text-align: center;
 	
-}
-.basket{
-	width:20px;
-	height: 18px;
-	background: url(../img/icon.png) -19px 0;
-	margin-top: 5px;
 }
 
 /*首页 内容*/
@@ -230,6 +222,50 @@ ion-content.menulist{
 	
 }
 
+/*搜索页面*/
+.menu-search .hot-key{
+	background: #fff;
+	padding-top: 20px;
+}
+.menu-search .hot-key h4,.menu-search .collection h4{
+	font-size: 14px;
+	color:#ccc;
+	margin-left: 20px;
+	padding-top: 10px;
+	margin-top:0;
+}
+.menu-search .row{
+	padding: 0;
+}
+.menu-search .col-33{
+	text-align: center;
+	color: #565656;
+
+}
+.menu-search .searchMenu .item{
+	font-size: 14px;
+	padding:5px 50px;
+	color: #565656;
+}
+.menu-search .item i{
+	font-size: 18px;
+}
+.menu-search .collection{
+	background: #fff;
+}
+.menu-search .collection img{
+	width: 45px;
+	height: 45px;
+}
+.menu-search .collection .item{
+	padding: 10px 70px 10px;
+}
+.menu-search .collection .item h2{
+	line-height: 45px;
+}
+
+
+
  /* 字体图标 */
 @font-face {
 	font-family: 'iconfont';
@@ -251,3 +287,4 @@ ion-content.menulist{
 .icon-setting:before { content: "\e600"; line-height: 0.8;font-size: 40px;}
 .icon-caipu:before { content: "\e602"; line-height: 0.8;font-size: 40px;}
 .icon-chufang:before { content: "\e603"; line-height: 1.2;font-size: 25px;}
+.icon-basketorganicfoodv1codropswojciechzasina:before { content: "\e7c3"; line-height: 1;font-size: 24px;} /*菜篮*/
