@@ -1,10 +1,38 @@
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true
+[
+  {
+    "id":1,
+    "img":"",
+    "title":"水煮肉片(吃不够的下饭菜)",
+    "score":"8.7",
+    "hotnum":"816",
+    "author":"零七八岁静时光",
+    "authorImg":""
   },
-  "exclude": [
-    "node_modules"
-  ]
-}
+  {
+    "id":2,
+    "img":"",
+    "title":"肉沫豆角下饭菜",
+    "score":"8.4",
+    "hotnum":"5347",
+    "author":"艾琳love",
+    "authorImg":""
+  },
+  {
+    "id":3,
+    "img":"",
+    "title":"麻婆豆腐",
+    "score":"7.9",
+    "hotnum":"12445",
+    "author":"大花花西瓜瓜",
+    "authorImg":""
+  },
+  {
+    "id":4,
+    "img":"",
+    "title":"水煮肉片(吃不够的下饭菜)",
+    "score":"8.7",
+    "hotnum":"816",
+    "author":"零七八岁静时光",
+    "authorImg":""
+  }
+]

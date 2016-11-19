@@ -15,33 +15,12 @@
 <ion-content class="menulist">
 	<div class="list">
 
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="img/menu1.jpg">
-	      <h2>水煮肉片(吃不够的下饭菜)</h2>
-	      <p>零七八岁静时光</p>
-	      <span>8.7分 816人做过</span>
-	    </a>
-
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="img/menu4.jpg">
-	      <h2>肉沫豆角下饭菜</h2>
-	      <p>艾琳love</p>
-	      <span>8.4分 5347人做过</span>
-	    </a>
-
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="img/menu2.jpg">
-	      <h2>肉沫茄子</h2>
-	      <p>肥Dudu</p>
-	      <span>8.1分 2315人做过</span>
-	    </a>
-
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="img/menu3.jpg">
-	      <h2>麻婆豆腐</h2>
-	      <p>大花花西瓜瓜</p>
-	      <span>7.9分 12445人做过</span>
-	    </a>
+    <a class="item item-thumbnail-left" href="#/menu/menu-detail/{{ menu.id}}" ng-click="" ng-repeat="menu in menuLists">
+      <img src="img/menu{{menu.id}}.jpg">
+      <h2>{{menu.title}}</h2>
+      <p>{{menu.author}}</p>
+      <span>{{menu.score}}分 {{menu.hotnum}}人做过</span>
+    </a>
 
 	</div>
 

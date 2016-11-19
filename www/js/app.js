@@ -20,15 +20,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider 
+  $stateProvider
 //下方导航栏
-  .state('tab', {  
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 //首页
-  .state('tab.ikitchen', { 
+  .state('tab.ikitchen', {
     url: '/ikitchen',
     views: {
       'tab-ikitchen': {
@@ -72,6 +72,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/menu/menu-search-page',
     templateUrl: 'templates/menu-search.html',
     controller: 'SearchPageCtrl'
+  })
+//菜谱详情页面
+  .state('menu-detail', {
+    url: '/menu/menu-detail/:id',
+    templateUrl: 'templates/menu-detail.html',
+    controller: 'MenuDetailCtrl'
   })
   ;
 

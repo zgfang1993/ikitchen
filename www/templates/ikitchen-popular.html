@@ -1,12 +1,12 @@
 <ion-header-bar align-title="center" class="bar-light">
-  <a href="#/tab/ikitchen"><div class="ion-arrow-left-c"></div></a>
+  <a class="button button-clear ion-ios-arrow-left" href="#/tab/ikitchen"></a>
   <h1 class="title">本周流行菜谱</h1>
 </ion-header-bar>
 
 <ion-content class="weekly_popu">
 
 	<div class="list card" ng-repeat="i in popu_data">
-	
+
 		<div class="item item-image">
 	       <img ng-src="{{i.imgurl}}" />
 	    </div>
