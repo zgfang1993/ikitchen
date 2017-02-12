@@ -1,21 +1,22 @@
 <!-- 菜谱搜索 菜谱列表 -->
 <ion-header-bar align-title="center" class="bar-light menulist">
 	<div class="bar bar-header item-input-inset">
-	  <button class="button button-clear ion-ios-arrow-left"></button>
+	  <button class="button button-clear ion-ios-arrow-left" ng-click="goBack()"></button>
+
 	  <label class="item-input-wrapper">
 	    <i class="icon ion-ios-search placeholder-icon"></i>
 	    <input type="search" placeholder="Search">
 	    <i class="icon ion-ios-close placeholder-icon"></i>
 	  </label>
-	  <button class="button button-clear iconfont icon-shezhi" ng-click="modal.show()">
-	  </button>
+
+	  <button class="button button-clear iconfont icon-shezhi" ng-click="modal.show()"></button>
 	</div>
 </ion-header-bar>
 
 <ion-content class="menulist">
 	<div class="list">
-
-    <a class="item item-thumbnail-left" href="#/menu/menu-detail/{{ menu.id}}" ng-click="" ng-repeat="menu in menuLists">
+<!--#/menu/menu-detail/{{ menu.id}}-->
+    <a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists">
       <img src="img/menu{{menu.id}}.jpg">
       <h2>{{menu.title}}</h2>
       <p>{{menu.author}}</p>

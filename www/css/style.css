@@ -1,6 +1,9 @@
 *{
 	font-family: "微软雅黑";
 }
+.cl{
+  clear: left;
+}
 .color-o,.button.button-clear.color-o{
 	color: #ff726d;
 }
@@ -154,7 +157,7 @@ ion-content{
 .classification .menu-panel{
 	background: #fff;
 }
-.classification .menu-panel .row .col{
+.classification .menu-panel .col{
 	position: relative;
 }
 .classification h1{
@@ -163,13 +166,16 @@ ion-content{
     margin: 5px 0 5px 10px;
     font-weight: bold;
 }
-.classification .menu-panel .row .col span{
+.classification .menu-panel  .col span{
 	position: absolute;
     bottom: 15px;
     color: #fff;
     display: inline-block;
     margin-left: 24%;
 
+}
+.menu-panel .col-25{
+  float: left;
 }
 
 /* 菜谱搜索列表 */

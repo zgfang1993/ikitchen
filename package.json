@@ -1,7 +1,7 @@
 {
   "name": "ikitchen",
   "version": "1.1.1",
-  "description": "ikitchen: An Ionic project",
+  "description": "爱厨房是食菜谱网倡导在家烹饪、健康的生活方式,提供有版权的实用菜谱做法与饮食知识,提供厨师和美食爱好者一个记录、分享的平台。",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

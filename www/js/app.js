@@ -17,7 +17,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 })
+//tabs在安卓手机中顶部问题解决
+  .config(['$ionicConfigProvider',function($ionicConfigProvider) {
+    //   $ionicConfigProvider.tabs.position('bottom');// other values: top
+    $ionicConfigProvider.platform.ios.tabs.style('standard');
+    $ionicConfigProvider.platform.ios.tabs.position('bottom');
+    $ionicConfigProvider.platform.android.tabs.style('standard');
+    $ionicConfigProvider.platform.android.tabs.position('bottom');
 
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+    $ionicConfigProvider.platform.android.navBar.alignTitle('center');
+
+    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
+    $ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
+
+    $ionicConfigProvider.platform.ios.views.transition('ios');
+    $ionicConfigProvider.platform.android.views.transition('android');
+
+  }])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -43,6 +60,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/ikitchen-popular.html',
     controller: 'PopulCtrl'
   })
+  //测试
+    .state('test', {
+      url: '/ikitchen/test',
+      templateUrl: 'templates/ikitchen-test.html',
+      controller: 'TestCtrl'
+    })
 //创建菜谱名
   .state('create', {
     url: '/create/name',
@@ -55,27 +78,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/create-detail.html',
     controller: 'CreateNameCtrl'
   })
-//菜谱
+//菜谱分类
   .state('menu-classification', {
     url: '/menu/menu-classification',
-    templateUrl: 'templates/menu-classification.html'
-    //controller: 'CreateNameCtrl'
+    templateUrl: 'templates/menu-classification.html',
+    controller: 'ClassificationCtrl'
   })
-//菜谱搜索列表
+
+
+  //菜谱搜索页
   .state('menu-search', {
     url: '/menu/menu-search',
-    templateUrl: 'templates/menu-list.html',
-    controller: 'MenuSearchCtrl'
-  })
-//菜谱搜索页
-  .state('menu-search-page', {
-    url: '/menu/menu-search-page',
     templateUrl: 'templates/menu-search.html',
     controller: 'SearchPageCtrl'
   })
+//菜谱搜索列表  menu-list
+  .state('menu-list', {
+    url: '/menu/menu-list/:source',
+    templateUrl: 'templates/menu-list.html',
+    controller: 'MenuSearchCtrl'
+  })
+
 //菜谱详情页面
   .state('menu-detail', {
-    url: '/menu/menu-detail/:id',
+    params:{"id":null},
+    url: '/menu/menu-detail',
     templateUrl: 'templates/menu-detail.html',
     controller: 'MenuDetailCtrl'
   })
