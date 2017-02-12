@@ -9,32 +9,12 @@ angular.module('starter.controllers', [])
       }
     }
   }])
-/*测试*/
+  /*测试*/
   .controller('TestCtrl', function ($scope, $http,$state){
-  /*  $http({
-      url: 'http://www.weather.com.cn/data/sk/101010100.html',
-      method: 'get'
-    }).success(function (data) {
-      $scope.error = "访问成功啦";
-      console.log(data);
-    }).error(function (status) {
-      $scope.error = "访问失败啦"+status.detail;
-
-    });*/
-
-    $.ajax({
-      type: "GET",
-      url: "http://www.weather.com.cn/data/sk/101010100.html" ,
-      contentType: "application/json",
-      dataType: "json",
-      headers: {'Access-Control-Allow-Origin': '*'},
-      success:function (data) {
-        console.log(data);
-      }
-    });
 
 
   })
+  /*首页*/
   .controller('ikitchenCtrl', function ($scope, $state) {
     $scope.toSearchPage = function () {
       $state.go('menu-search');
@@ -70,60 +50,65 @@ angular.module('starter.controllers', [])
    */
   .controller('ClassificationCtrl', function ($scope, $state, $ionicHistory, $http) {
     $http({
-      url: 'http://120.24.225.232:8090/apis/Menu/',
+      url: 'http://120.24.225.232:8090/api/menu/all/',
       method: 'get'
     }).success(function (data) {
       $scope.error = "访问成功啦";
-      console.log(data["results"]);
-      var results = data["results"];
-      $scope.cf_list = get_json_list(results);
+      $scope.cf_list = data["content"];
+      console.log($scope.cf_list);
+      $scope.load = function () {
+        $('.menu-panel img').css('height',$('.menu-panel img').css('width'));//高度等于宽度
+      };
+
     }).error(function (status) {
       $scope.error = "访问失败啦"+status.detail;
       console.log('sss');
       console.log(status.detail);
       //处理响应失败
     });
-    function get_json_list(arr) {
-      var map = {};
-      var dest = [];
-      for (var i = 0; i < arr.length; i++) {
-        var ai = arr[i];
-        if (!map[ai.tag]) {
-          dest.push({
-            tag: ai.tag,
-            data: [ai]
-          });
-          map[ai.tag] = ai;
-        } else {
-          for (var j = 0; j < dest.length; j++) {
-            var dj = dest[j];
-            if (dj.tag == ai.tag) {
-              dj.data.push(ai);
-              break;
-            }
-          }
-        }
-      }
-      return dest
-
-    }
+    //相应分类的菜谱列表页
+    $scope.goMeneList = function (id) {
+      var param = {
+        id:id,
+        source:"menu-classification",
+        key:null
+      };
+      $state.go("menu-list",param);
+    };
 
   })
   //菜谱搜索列表 menu-list
   .controller('MenuSearchCtrl', function ($scope, $ionicModal, $http, $state, $stateParams, $ionicHistory) {
     console.log($stateParams);
     var source = $stateParams.source;//上一页
-    //获取菜谱列表
-    $http({
-      url: 'js/menuLists.json',
-      method: 'GET'
-    }).success(function (data, header, config, status) {
-      //响应成功
-      $scope.menuLists = data
-    }).error(function (data, header, config, status) {
-      console.log('sss');
-      //处理响应失败
-    });
+    if($stateParams.id){
+      listById($stateParams.id);
+    }
+    //根据分类获取列表
+    function listById(id){
+      $http({
+        url: 'http://120.24.225.232:8090/api/cookbook/by_menu/?menu='+id,
+        method: 'GET'
+      }).success(function (data, header, config, status) {
+        //响应成功
+        $scope.menuLists = data.content;
+        console.log($scope.menuLists);
+      }).error(function (data, header, config, status) {
+        console.log('请求失败');
+        //处理响应失败
+      });
+    }
+    //本地获取菜谱列表
+    // $http({
+    //   url: 'js/menuLists.json',
+    //   method: 'GET'
+    // }).success(function (data, header, config, status) {
+    //   //响应成功
+    //   $scope.menuLists = data
+    // }).error(function (data, header, config, status) {
+    //   console.log('sss');
+    //   //处理响应失败
+    // });
     //end
 
     /* $scope.toMenuDetail = function(){

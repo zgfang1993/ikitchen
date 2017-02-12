@@ -18,9 +18,9 @@
 <!--#/menu/menu-detail/{{ menu.id}}-->
     <a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists">
       <img src="img/menu{{menu.id}}.jpg">
-      <h2>{{menu.title}}</h2>
-      <p>{{menu.author}}</p>
-      <span>{{menu.score}}分 {{menu.hotnum}}人做过</span>
+      <h2>{{menu.CKB_name}}</h2>
+      <p>{{menu.CBK_username}}</p>
+      <span>{{menu.CBK_score}}分 {{menu.CKB_do_num}}人做过</span>
     </a>
 
 	</div>
