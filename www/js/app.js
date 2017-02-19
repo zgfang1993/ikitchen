@@ -54,6 +54,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
         }
       })
+      //登录
+      .state('tab.login', {
+        url: '/login',
+        views: {
+          'tab-Mine': {
+            templateUrl: 'templates/login.html',
+            controller: 'loginCtrl'
+          }
+        }
+      })
       //流行菜谱
       .state('ikitchen-popular', {
         url: '/ikitchen/weekly_popular',
@@ -94,7 +104,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       })
       //菜谱搜索列表  menu-list
       .state('menu-list', {
-        params: {"id": null, "source": null, "key": null},
+        params: {"id": null, "source": null, "search_key": null},
         url: '/menu/menu-list',
         templateUrl: 'templates/menu-list.html',
         controller: 'MenuSearchCtrl'
@@ -106,33 +116,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         url: '/menu/menu-detail',
         templateUrl: 'templates/menu-detail.html',
         controller: 'MenuDetailCtrl'
-      })
-    ;
+      });
 
-    /* .state('tab.chats', {
-     url: '/chats',
-     views: {
-     'tab-create': {
-     templateUrl: 'templates/tab-chats.html',
-     controller: 'ChatsCtrl'
-     }
-     }
-     })
-     .state('tab.chat-detail', {
-     url: '/chats/:chatId',
-     views: {
-     'tab-chats': {
-     templateUrl: 'templates/chat-detail.html',
-     controller: 'ChatDetailCtrl'
-     }
-     }
-     })
-
-     .state('tab.account', {
+    /*
+     .state('tab.menu', {
      url: '/account',
      views: {
-     'tab-account': {
-     templateUrl: 'templates/tab-account.html',
+     'tab-menu': {
+     templateUrl: 'templates/tab-menu.html',
      controller: 'AccountCtrl'
      }
      }

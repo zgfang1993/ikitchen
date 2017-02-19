@@ -14,13 +14,19 @@
 </ion-header-bar>
 
 <ion-content class="menulist">
+  <ul class="orderType tab-bar">
+    <li ng-class="sort_active.auto" ng-click="menuSort('auto')"><a href="">智能排序</a></li>
+    <li ng-class="sort_active.score" ng-click="menuSort('score')"><a href="">评分最高</a></li>
+    <li ng-class="sort_active.do_num" ng-click="menuSort('do_num')"><a href="">做过最多</a></li>
+  </ul>
 	<div class="list">
 <!--#/menu/menu-detail/{{ menu.id}}-->
-    <a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists">
-      <img src="img/menu{{menu.id}}.jpg">
-      <h2>{{menu.CKB_name}}</h2>
-      <p>{{menu.CBK_username}}</p>
-      <span>{{menu.CBK_score}}分 {{menu.CKB_do_num}}人做过</span>
+    <!--<a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists | orderBy:menu.score:'desc'">-->
+    <a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists | orderBy:sortFlag :'desc'">
+      <img src="{{menu.title_pic}}">
+      <h2>{{menu.name}}</h2>
+      <p>{{menu.username}}</p>
+      <span>{{menu.score}}分 {{menu.do_num}}人做过</span>
     </a>
 
 	</div>

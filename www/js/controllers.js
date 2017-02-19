@@ -9,8 +9,41 @@ angular.module('starter.controllers', [])
       }
     }
   }])
+  /*enter事件*/
+  .directive('myEnter', function () {
+    return function (scope, element, attrs) {
+      element.bind("keydown keypress", function (event) {
+        if (event.which === 13) {
+          scope.$apply(function () {
+            scope.$eval(attrs.myEnter);
+          });
+
+          event.preventDefault();
+        }
+      });
+    };
+  })
+
+  .filter('myLimitTo', [function () {
+    return function (obj, limit) {
+      var keys = Object.keys(obj);
+      if (keys.length < 1) {
+        return [];
+      }
+      var ret = new Object,
+        count = 0;
+      angular.forEach(keys, function (key, arrayIndex) {
+        if (count >= limit) {
+          return false;
+        }
+        ret[key] = obj[key];
+        count++;
+      });
+        return ret;
+    };
+  }])
   /*测试*/
-  .controller('TestCtrl', function ($scope, $http,$state){
+  .controller('TestCtrl', function ($scope, $http, $state) {
 
 
   })
@@ -20,29 +53,62 @@ angular.module('starter.controllers', [])
       $state.go('menu-search');
     }
   })
+  /*登录*/
+  .controller('loginCtrl', function ($scope, $state) {
+
+
+  })
   //菜谱搜索页面 menu-search
-  .controller('SearchPageCtrl', function ($scope, $state, $ionicHistory) {
+  .controller('SearchPageCtrl', function ($scope, $state, $ionicHistory, $http) {
+    $scope.keys = {};
+    //返回上一页
     $scope.returnpage = function () {
-      $scope.searchval = "";
+      $scope.search_val = "";
       $state.go("tab.ikitchen");
       //$ionicHistory.goBack();
     };
-    $scope.searchval = "";
+
+
+    $scope.search_val = "";
     $scope.search_show = false;
+
+    //搜索框改变时
     $scope.search_change = function () {
-      if ($scope.searchval == "") {
-        $scope.search_show = false;
-      } else {
-        $scope.search_show = true;
+
+      $scope.search_show = $scope.search_val == "" ? false : true;
+      var data = {"input": $scope.search_val};
+      if ($scope.search_val != "") {
+        $http({
+          url: 'http://120.24.225.232:8090/api/search/relate/',
+          method: 'post',
+          data: data
+        }).success(function (data) {
+          console.log(data.content);
+          $scope.keys = data.content.hot;
+          $scope.my_favorite = data.content.like;
+
+        }).error(function (status) {
+
+        });
       }
-      // $scope.search_show = $scope.searchval?false:true;
 
     };
+
     /*前往搜索相关的菜谱列表*/
-    $scope.toListPage = function () {
+    function goToMenuList(val) {
       var source = "menu-search";
-      $state.go("menu-list", {"source": source});
+      $state.go("menu-list", {"source": source, "search_key": val});
     }
+
+    $scope.goToMenuList = goToMenuList;
+    $scope.mykey = function (e) {
+      var keycode = window.event ? e.keyCode : e.which;//获取按键编码
+      if (keycode == 13) {
+        goToMenuList($scope.search_val);
+      }
+    };
+
+
   })
 
   /*
@@ -57,11 +123,11 @@ angular.module('starter.controllers', [])
       $scope.cf_list = data["content"];
       console.log($scope.cf_list);
       $scope.load = function () {
-        $('.menu-panel img').css('height',$('.menu-panel img').css('width'));//高度等于宽度
+        $('.menu-panel img').css('height', $('.menu-panel img').css('width'));//高度等于宽度
       };
 
     }).error(function (status) {
-      $scope.error = "访问失败啦"+status.detail;
+      $scope.error = "访问失败啦" + status.detail;
       console.log('sss');
       console.log(status.detail);
       //处理响应失败
@@ -69,35 +135,56 @@ angular.module('starter.controllers', [])
     //相应分类的菜谱列表页
     $scope.goMeneList = function (id) {
       var param = {
-        id:id,
-        source:"menu-classification",
-        key:null
+        id: id,
+        source: "menu-classification",
+        key: null
       };
-      $state.go("menu-list",param);
+      $state.go("menu-list", param);
     };
 
   })
   //菜谱搜索列表 menu-list
   .controller('MenuSearchCtrl', function ($scope, $ionicModal, $http, $state, $stateParams, $ionicHistory) {
     console.log($stateParams);
+    $scope.sort_active = {"auto": "active", "score": "", "do_num": ""};
     var source = $stateParams.source;//上一页
-    if($stateParams.id){
-      listById($stateParams.id);
-    }
-    //根据分类获取列表
-    function listById(id){
+    var search_key = $stateParams.search_key;
+    var search_id = $stateParams.id;
+    // $scope.sortFlag = "score";
+
+
+    $scope.menuSort = function (type) {
+      $scope.sort_active = {"auto": "", "score": "", "do_num": ""};
+      $scope.sort_active[type] = "active";
+      $scope.sortFlag = type;
+    };
+
+    listByIdOrKey();
+
+    //根据搜索条件搜索列表
+    function listByIdOrKey() {
+      var urlId = 'http://120.24.225.232:8090/api/cookbook/by_menu/?menu=' + search_id;  //根据分类获取列表
+      var urkKey = 'http://120.24.225.232:8090/api/cookbook/by_name/?name=' + search_key;   //根据关键词类获取列表
+      var url = search_id ? urlId : urkKey;
+
       $http({
-        url: 'http://120.24.225.232:8090/api/cookbook/by_menu/?menu='+id,
+        url: url,
         method: 'GET'
       }).success(function (data, header, config, status) {
         //响应成功
         $scope.menuLists = data.content;
+        $.each($scope.menuLists, function (i, item) {
+          item.do_num = parseInt(item.do_num);
+          item.score = parseFloat(item.score);
+          item.favorite = parseInt(item.favorite);
+        });
         console.log($scope.menuLists);
       }).error(function (data, header, config, status) {
         console.log('请求失败');
         //处理响应失败
       });
     }
+
     //本地获取菜谱列表
     // $http({
     //   url: 'js/menuLists.json',

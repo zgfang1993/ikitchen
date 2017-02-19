@@ -5,7 +5,7 @@
 
     <label class="item-input-wrapper">
       <i class="icon ion-ios-search placeholder-icon"></i>
-      <input autofocus class="search" type="search" placeholder="菜谱、食材" ng-model="searchval" ng-change="search_change()">
+      <input autofocus class="search" type="search" placeholder="菜谱、食材" ng-model="search_val" ng-keyup="mykey($event)" ng-change="search_change()">
     </label>
 
     <button class="button button-clear color-o" ng-click="returnpage()">取消</button>
@@ -37,27 +37,21 @@
 	<!--搜菜谱-->
 	<div class="list searchMenu" ng-show="search_show">
 
-	    <a class="item item-icon-left" href="#">
-		    <i class="icon ion-ios-search placeholder-icon"></i>
-		    搜菜谱 : {{searchval}}
-	    </a>
+    <a class="item item-icon-left" href="" ng-click="goToMenuList(search_val)" ng-bind="'搜菜谱 :'+search_val">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+    </a>
 		<!--搜索相关词-->
-		<a class="item" href="" ng-click="toListPage()">蛋糕</a>
-		<a class="item" href="">红烧肉</a>
-		<a class="item" href="">酸汤肥牛</a>
+    <a class="item" href="" ng-click="goToMenuList(key)" ng-repeat="(key,count) in keys | myLimitTo:6">{{key}}</a>
+
 	</div>
 
 	<!--根据搜索的相关收藏-->
 	<div class="collection" ng-show="search_show">
 		<h4>我的收藏</h4>
 		<div class="list">
-		     <a class="item item-avatar" href="#">
-		      <img src="cover.jpg">
-		      <h2>肉末豆角下饭菜</h2>
-		    </a>
-		    <a class="item item-avatar" href="#">
-		      <img src="cover.jpg">
-		      <h2>酸菜鱼</h2>
+		     <a class="item item-avatar" href="#" ng-repeat="item in my_favorite">
+		      <img src="http://ikitchen.b0.upaiyun.com/kitchen/menus/{{item.id}}.jpg">
+		      <h2>{{item.name}}</h2>
 		    </a>
 		</div>
 	</div>
