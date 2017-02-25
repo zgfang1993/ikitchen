@@ -67,7 +67,31 @@ angular.module('starter.controllers', [])
       $state.go("tab.ikitchen");
       //$ionicHistory.goBack();
     };
+    //最近搜索 热门搜索
+    $http({
+      url: 'http://120.24.225.232:8090/api/search/hot_recent/',
+      method: 'get',
+    }).success(function (data) {
+      console.log(data.content);
+      $scope.recent = data.content.recent;
+      $scope.hot = data.content.hot;
 
+    }).error(function (status) {
+
+    });
+      //清空最近搜索
+    $scope.clearRecent = function () {
+      $http({
+        url: '',
+        method: 'get',
+      }).success(function (data) {
+        $scope.recent = null;
+
+      }).error(function (status) {
+
+      });
+    }
+    //最近搜索 热门搜索 end
 
     $scope.search_val = "";
     $scope.search_show = false;

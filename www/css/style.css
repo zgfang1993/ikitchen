@@ -1,6 +1,7 @@
-*{
+*,h1,h2,h3,h4,h5,h6{
 	font-family: "微软雅黑";
 }
+
 a{
   text-decoration: none;
 }
@@ -249,47 +250,7 @@ ion-content.menulist{
 
 }
 
-/*搜索页面*/
-.menu-search .hot-key{
-	background: #fff;
-	padding-top: 20px;
-}
-.menu-search .hot-key h4,.menu-search .collection h4{
-	font-size: 14px;
-	color:#ccc;
-	margin-left: 20px;
-	padding-top: 10px;
-	margin-top:0;
-}
-.menu-search .row{
-	padding: 0;
-}
-.menu-search .col-33{
-	text-align: center;
-	color: #565656;
 
-}
-.menu-search .searchMenu .item{
-	font-size: 14px;
-	padding:5px 50px;
-	color: #565656;
-}
-.menu-search .item i{
-	font-size: 18px;
-}
-.menu-search .collection{
-	background: #fff;
-}
-.menu-search .collection img{
-	width: 45px;
-	height: 45px;
-}
-.menu-search .collection .item{
-	padding: 10px 70px 10px;
-}
-.menu-search .collection .item h2{
-	line-height: 45px;
-}
 
 /*菜谱详情页*/
 .menu_img{

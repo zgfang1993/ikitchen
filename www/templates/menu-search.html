@@ -16,25 +16,25 @@
 <ion-content class="menu-search">
 	<!---热门搜索 关键词-->
 	<div class="hot-key" ng-show="!search_show">
-		<h4>热门搜索</h4>
-		<div class="row">
-		  <div class="col col-33">蛋糕</div>
-		  <div class="col col-33">家常菜</div>
-		  <div class="col col-33">面包</div>
-		</div>
-		<div class="row">
-		  <div class="col col-33">早餐</div>
-		  <div class="col col-33">蛋挞</div>
-		  <div class="col col-33">肉类</div>
-		</div>
-		<div class="row">
-		  <div class="col col-33">茄子</div>
-		  <div class="col col-33">土豆</div>
-		  <div class="col col-33">豆腐</div>
-		</div>
+    <div class="recently">
+      <div ng-show="recent">
+        <h4>最近搜索</h4>
+        <a href="" class="empty" ng-click="clearRecent()">清空</a>
+      </div>
+      <div class="key_list">
+        <a href="" ng-repeat="item in recent">{{item}}</a>
+      </div>
+    </div>
+    <div class="hot">
+      <h4>热门搜索</h4>
+      <div class="key_list">
+        <a href="" ng-repeat="item in hot">{{item}}</a>
+      </div>
+    </div>
+
 	</div>
 
-	<!--搜菜谱-->
+	<!--菜谱列表-->
 	<div class="list searchMenu" ng-show="search_show">
 
     <a class="item item-icon-left" href="" ng-click="goToMenuList(search_val)" ng-bind="'搜菜谱 :'+search_val">
