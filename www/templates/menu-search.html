@@ -16,19 +16,19 @@
 <ion-content class="menu-search">
 	<!---热门搜索 关键词-->
 	<div class="hot-key" ng-show="!search_show">
-    <div class="recently">
-      <div ng-show="recent">
+    <div class="recently" ng-show="recent_show">
+      <div  >
         <h4>最近搜索</h4>
         <a href="" class="empty" ng-click="clearRecent()">清空</a>
       </div>
       <div class="key_list">
-        <a href="" ng-repeat="item in recent">{{item}}</a>
+        <a href="" ng-repeat="item in recent" ng-click="goToMenuList(item)">{{item}}</a>
       </div>
     </div>
     <div class="hot">
       <h4>热门搜索</h4>
       <div class="key_list">
-        <a href="" ng-repeat="item in hot">{{item}}</a>
+        <a href="" ng-repeat="item in hot" ng-click="goToMenuList(item)">{{item}}</a>
       </div>
     </div>
 
