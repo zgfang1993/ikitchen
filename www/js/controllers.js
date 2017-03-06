@@ -44,8 +44,6 @@ angular.module('starter.controllers', [])
   }])
   /*测试*/
   .controller('TestCtrl', function ($scope, $http, $state) {
-
-
   })
   /*首页*/
   .controller('ikitchenCtrl', function ($scope, $state) {
@@ -63,6 +61,7 @@ angular.module('starter.controllers', [])
     $scope.keys = {};
     //返回上一页
     $scope.returnpage = function () {
+      $scope.search_show = false;//隐藏
       $scope.search_val = "";
       $state.go("tab.ikitchen");
       //$ionicHistory.goBack();
@@ -74,6 +73,7 @@ angular.module('starter.controllers', [])
     }).success(function (data) {
       console.log(data.content);
       $scope.recent = data.content.recent;
+      $scope.recent_show = $scope.recent.length == 0?false:true;
       $scope.hot = data.content.hot;
 
     }).error(function (status) {
@@ -82,10 +82,10 @@ angular.module('starter.controllers', [])
       //清空最近搜索
     $scope.clearRecent = function () {
       $http({
-        url: '',
+        url: 'http://120.24.225.232:8090/api/search/clear/',
         method: 'get',
       }).success(function (data) {
-        $scope.recent = null;
+        $scope.recent_show = false;
 
       }).error(function (status) {
 
@@ -121,6 +121,17 @@ angular.module('starter.controllers', [])
     /*前往搜索相关的菜谱列表*/
     function goToMenuList(val) {
       var source = "menu-search";
+
+      $http({
+          url: 'http://120.24.225.232:8090/api/search/insert/',
+        method: 'POST',
+        data:{"input":val}
+      }).success(function (data, header, config, status) {
+          console.log(data);
+      }).error(function (data, header, config, status) {
+
+      });
+
       $state.go("menu-list", {"source": source, "search_key": val});
     }
 
@@ -157,11 +168,11 @@ angular.module('starter.controllers', [])
       //处理响应失败
     });
     //相应分类的菜谱列表页
-    $scope.goMeneList = function (id) {
+    $scope.goMeneList = function (id,name) {
       var param = {
         id: id,
         source: "menu-classification",
-        key: null
+        search_key: name
       };
       $state.go("menu-list", param);
     };
@@ -174,8 +185,8 @@ angular.module('starter.controllers', [])
     var source = $stateParams.source;//上一页
     var search_key = $stateParams.search_key;
     var search_id = $stateParams.id;
+    $scope.search_key = search_key;
     // $scope.sortFlag = "score";
-
 
     $scope.menuSort = function (type) {
       $scope.sort_active = {"auto": "", "score": "", "do_num": ""};
@@ -197,12 +208,18 @@ angular.module('starter.controllers', [])
       }).success(function (data, header, config, status) {
         //响应成功
         $scope.menuLists = data.content;
-        $.each($scope.menuLists, function (i, item) {
-          item.do_num = parseInt(item.do_num);
-          item.score = parseFloat(item.score);
-          item.favorite = parseInt(item.favorite);
-        });
-        console.log($scope.menuLists);
+        if($scope.menuLists.length == 0){ //没有搜索结果
+          $scope.notFund = true;
+        }else {
+          $.each($scope.menuLists, function (i, item) {
+            item.do_num = parseInt(item.do_num);
+            item.score = parseFloat(item.score);
+            item.favorite = parseInt(item.favorite);
+          });
+          console.log($scope.menuLists);
+        }
+
+
       }).error(function (data, header, config, status) {
         console.log('请求失败');
         //处理响应失败
@@ -260,19 +277,23 @@ angular.module('starter.controllers', [])
   /*菜谱详情页*/
   .controller('MenuDetailCtrl', function ($scope, $http, $stateParams, $state, $ionicHistory) {
     var id = $stateParams.id;
-
+    /*加载菜谱详细信息by id*/
     $http({
-      url: 'js/menuLists.json',
-      method: 'GET'
+      url: 'http://120.24.225.232:8090/api/cookbook/by_cookbook_id/',
+      method: 'POST',
+      data:{"id":id}
     }).success(function (data, header, config, status) {
       //响应成功
-      angular.forEach(data, function (obj, n) {
-        while (obj.id == id) {
-          $scope.menu = obj;
-          return;
-        }
-        console.log($scope.menu.title);
-      })
+      console.log("菜谱详情");
+      console.log(data);
+      $scope.menu = data.content;
+      // /*angular.forEach(data, function (obj, n) {
+      //   while (obj.id == id) {
+      //     $scope.menu = obj;
+      //     return;
+      //   }
+      //   console.log($scope.menu.title);
+      // })*/
 
     }).error(function (data, header, config, status) {
       console.log('sss');
@@ -285,17 +306,31 @@ angular.module('starter.controllers', [])
 
 
   })
-  //创建菜谱详情
-  .controller('CreateDetailCtrl', function ($scope) {
-
-  })
-
-  .controller('CreateNameCtrl', function ($scope) {
-    $scope.isshow = true;
-    $scope.show = function () {
-      $scope.isshow = !$scope.isshow;
+  //创建菜谱名
+  .controller('CreateNameCtrl', function ($scope,$state) {
+    $scope.menuName = "";
+    $scope.createDetail = function () {
+      console.log($scope.menuName);
+      $state.go("create-detail",{});
     }
   })
+  //创建菜谱详情
+  .controller('CreateDetailCtrl', function ($scope,$stateParams) {
+    $scope.menu_name = $stateParams.menu_name;
+    /*插件*/
+    $scope.data = {
+      showDelete: false //显示delete
+    };
+    //删除
+    $scope.onItemDelete = function(item) {
+      $scope.items.splice($scope.items.indexOf(item), 1);
+    };
+    $scope.items = [
+      { material: "",amount:"" }
+    ];
+    /*插件*/
+  })
+
 
   /*每周流行菜谱*/
   .controller('PopulCtrl', function ($scope, $http) {
@@ -313,21 +348,3 @@ angular.module('starter.controllers', [])
 
   })
 
-
-  .controller('ChatsCtrl', function ($scope, Chats) {
-
-    $scope.chats = Chats.all();
-    $scope.remove = function (chat) {
-      Chats.remove(chat);
-    };
-  })
-
-  .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
-    $scope.chat = Chats.get($stateParams.chatId);
-  })
-
-  .controller('AccountCtrl', function ($scope) {
-    $scope.settings = {
-      enableFriends: true
-    };
-  });

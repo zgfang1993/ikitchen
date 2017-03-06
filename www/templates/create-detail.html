@@ -1,16 +1,69 @@
-<ion-header-bar align-title="center" class="bar-light">
+<ion-header-bar align-title="center" class="bar-light create_detail">
   <a class="button button-clear ion-ios-arrow-left" href="#/create/name"></a>
   <!-- <button class="button button-clear ion-ios-arrow-left"></button> -->
   <h1 class="title">创建菜谱</h1>
 </ion-header-bar>
 
-<ion-content class="detail">
+<ion-content class="create_detail">
 	<div class="cover">
 		<div class="cpfm">
 			+ 菜谱封面
 		</div>
 	</div>
-	<div class="row title">
-		{{menu.name}}番茄炒蛋
+	<div class="box">
+    <input type="text" ng-model="name">
+    <textarea placeholder="输入这道美食背后的故事"></textarea>
+    <div class="material">
+      <h4>用料</h4>
+      <ul>
+        <li>
+          <input type="text" placeholder="食材：如鸡蛋">
+          <input type="text" placeholder = "用量：如1个">
+        </li>
+      </ul>
+
+      <!--插件-->
+      <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+        <ion-item ng-repeat="item in items" item="item" class="item-remove-animate">
+          <input type="text" placeholder="食材：如鸡蛋" ng-model="item.material">
+          <input type="text" placeholder = "用量：如1个" ng-model="item.amount">
+
+          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"> </ion-delete-button>
+          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+      </ion-list>
+      <!--插件 end-->
+
+      <div class="add">
+        <a class="" >再增加一行</a>
+        <a class="adj_sure" ng-click="data.showDelete = !data.showDelete; data.showReorder = !data.showReorder">调整完成</a>
+      </div>
+    </div>
+
+    <div class="steps">
+      <h4>做法</h4>
+      <div class="step1">
+        <h4>步骤一</h4>
+        <div class="">
+          + 步骤图
+        </div>
+        <input type="text" placeholder="添加步骤说明">
+      </div>
+      <div class="step2">
+        <h4>步骤二</h4>
+        <div class="">
+          + 步骤图
+        </div>
+        <input type="text" placeholder="添加步骤说明">
+      </div>
+      <div class="add">
+        <a class="" >再增加一步</a>
+        <a class="adj_sure" ng-click="data.showDelete = !data.showDelete; data.showReorder = !data.showReorder">调整步骤</a>
+      </div>
+    </div>
 	</div>
+
+  <div class="tag">
+
+  </div>
 </ion-content>

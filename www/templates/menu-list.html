@@ -5,7 +5,7 @@
 
 	  <label class="item-input-wrapper">
 	    <i class="icon ion-ios-search placeholder-icon"></i>
-	    <input type="search" placeholder="Search">
+	    <input type="search" placeholder="Search" ng-model="search_key">
 	    <i class="icon ion-ios-close placeholder-icon"></i>
 	  </label>
 
@@ -20,17 +20,19 @@
     <li ng-class="sort_active.do_num" ng-click="menuSort('do_num')"><a href="">做过最多</a></li>
   </ul>
 	<div class="list">
-<!--#/menu/menu-detail/{{ menu.id}}-->
-    <!--<a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists | orderBy:menu.score:'desc'">-->
     <a class="item item-thumbnail-left"  ng-click="goDetail(menu.id)" ng-repeat="menu in menuLists | orderBy:sortFlag :'desc'">
       <img src="{{menu.title_pic}}">
       <h2>{{menu.name}}</h2>
       <p>{{menu.username}}</p>
       <span>{{menu.score}}分 {{menu.do_num}}人做过</span>
     </a>
-
 	</div>
-
+  <div ng-show="notFund" class="notFound">
+      <div>
+        <img src="img/notfound1.gif" alt="">
+        <p>没有搜索结果</p>
+      </div>
+  </div>
 </ion-content>
 
 

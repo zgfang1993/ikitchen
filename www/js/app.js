@@ -35,6 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     $ionicConfigProvider.platform.android.views.transition('android');
 
   }])
+  //路由
   .config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
@@ -72,12 +73,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       })
       //测试
       .state('test', {
-        url: '/ikitchen/test',
+        url: '/test',
         templateUrl: 'templates/ikitchen-test.html',
         controller: 'TestCtrl'
       })
       //创建菜谱名
-      .state('create', {
+      .state('create-name', {
+        params: {"name": null},
         url: '/create/name',
         templateUrl: 'templates/create-name.html',
         controller: 'CreateNameCtrl'
@@ -86,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       .state('create-detail', {
         url: '/create/detail',
         templateUrl: 'templates/create-detail.html',
-        controller: 'CreateNameCtrl'
+        controller: 'CreateDetailCtrl'
       })
       //菜谱分类
       .state('menu-classification', {
@@ -118,16 +120,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'MenuDetailCtrl'
       });
 
-    /*
-     .state('tab.menu', {
-     url: '/account',
-     views: {
-     'tab-menu': {
-     templateUrl: 'templates/tab-menu.html',
-     controller: 'AccountCtrl'
-     }
-     }
-     });*/
 
 
     $urlRouterProvider.otherwise('/tab/ikitchen');

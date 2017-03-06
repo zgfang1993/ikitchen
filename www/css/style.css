@@ -1,406 +1,129 @@
-*,h1,h2,h3,h4,h5,h6{
-	font-family: "微软雅黑";
+*, h1, h2, h3, h4, h5, h6 {
+  font-family: "微软雅黑";
 }
 
-a{
+a {
   text-decoration: none;
 }
-.cl{
+
+.cl {
   clear: left;
 }
-.color-o,.button.button-clear.color-o{
-	color: #ff726d;
-}
-/*首页*/
-ion-header-bar.ikitchen{
-	padding: 0;
-}
-.bar.bar-stable{
-  background: #fff;
-}
-.banner1,.banner1 .col{
-	padding: 0;
+
+.color-o, .button.button-clear.color-o {
+  color: #ff726d;
 }
 
-.sikitchen .search{
-	text-align: center;
-
-}
-
-/*首页 内容*/
-ion-content{
-	background: #f7f6f2
-}
-.banner1{
-	height: 129px;
-}
-.cookiebook{
-	/* background: url(../img/img1.png); */
-	margin-right: 1px;
-}
-.attention{
-	/* background: url(../img/img2.png); */
-	margin-left: 1px;
-}
-.cookiebook img,.attention img,.scoller img,.weekly_box img{
-	width: 100%;
-}
-
-.scoller{
-	height: 75px;
-	margin-top: 5px;
-}
-.scoller .slider-pager{
-	bottom: 7px;
-}
-.slider-pager .slider-pager-page{
-	color: #f96650;
-}
-
-.weekly{
-	color: #3f3e3a;
-    text-align: center;
-    padding: 10px 0;
-}
-
-/*popular*/
-.weekly_popu .item h2{
-	margin-bottom: 12px;
-}
-.weekly_popu .avatar{
-	width: 50px;
-	height: 50px;
-	position: absolute;
-	right: 18px;
-	top:8px;
-}
-.weekly_popu .avatar img{
-	max-width: 50px;
-	max-height: 50px;
-	border-radius: 25px;
-}
-.weekly_popu .avatar h4{
-	text-align: center;
-}
-
-/* 创建菜谱 */
-/* .create .cancel,.create .next{
-	color: #ff726d;
-	text-decoration: none;
-}
-.create .title{
-	color: #3b3a36;
-} */
-.create a.cancel,.create a.next{
-	color: #ff726d;
-	text-decoration: none;
-
-}
-.create a.cancel,.classification a.cancel{
-	float: left;
-	margin-left: 10px;
-}
-.create a.next{
-	float: right;
-	margin-right: 10px;
-}
-
-.createfoot.bar-assertive,.createfoot.bar.bar-assertive.bar-footer{
-	background: #fb6650;
-}
-
-.create .writename{
-	margin:20px auto;
-	color: #959691;
-    font-size: 18px;
-}
-.create .writename .cp{
-	color: #959691;
-	text-align: center;
-	margin-bottom: 10px;
-}
-.create input{
-	background: #f7f6f2;
-}
-/* .foot{
-	background: #fb6650;
-	width: 100%;
-	height: 40px;
-	position: fixed;
-	bottom: 0;
-}
-.foot .title{
-	text-align: center;
-	font-size: 16px;
-	color: #fff;
-	line-height: 40px;
-}
- */
-
- /*创建菜谱详情 detail*/
- .detail .cover{
- 	width: 100%;
- 	height: 200px;
- 	background: #ebebe3;
- 	line-height: 200px;
-    text-align: center;
- }
- .detail .cover .cpfm{
- 	margin: 0 auto;
- }
 
 /* 菜谱分类 */
 
-.classification a.cancel{
-	color: #ff726d;
-	text-decoration: none;
-	position: absolute;
-	left: 10px;
+.classification a.cancel {
+  color: #ff726d;
+  text-decoration: none;
+  position: absolute;
+  left: 10px;
 }
 
-.classification .menu-panel{
-	background: #fff;
-}
-.classification .menu-panel .col{
-	position: relative;
-}
-.classification h1{
-	color: #808080;
-    font-size: 20px;
-    margin: 5px 0 5px 10px;
-    font-weight: bold;
-}
-.classification .menu-panel  .col span{
-	position: absolute;
-    bottom: 15px;
-    color: #fff;
-    display: inline-block;
-    margin-left: 24%;
-
-}
-.menu-panel .col-25{
-  float: left;
-}
-
-/* 菜谱搜索列表 */
-ion-header-bar.menulist{
-	padding: 0;
-}
-ion-content.menulist{
-	padding-top: 10px;
-}
-
-.bar-light .button.ion-ios-arrow-left{
-	margin-right: 20px;
-}
-.menulist .list a h2{
-	margin: 5px 0 10px 0;
-	color: #3a3a33;
-	font-family: "微软雅黑";
-}
-
-.menulist .list .item p{
-	color: #c5c5c2;
-  font-size: 12px;
-}
-
-.menulist .list .item span{
-	font-size: 12px;
-}
-.menulist .orderType{
-  overflow: auto;
-  margin-bottom: 10px;
-}
-.menulist .orderType li{
-  float: left;
-  width: 33%;
-  height: 40px;
-  background: #fff;
-  text-align: center;
-  line-height: 40px;
-}
-.menulist .orderType li.active{
-  border-bottom: 2px solid #ff654d;
-}
-.menulist .orderType li a{
-  color: #000;
-}
-/* 模态框 */
-.modal{
-	top:60%;
-}
-/* .modal ion-content .item-checkbox{
-	background: #f7f6f1;
-} */
-.radio-content{
-	height: 40px;
-}
-.modal ion-content .item-content{
-	background: #f7f6f1;
-	padding-left: 44px;
-	font-size: 14px;
-	color:#61605b;
-}
-.modal ion-content .radio-icon{
-	color:#ff654d;
-	font-size: 16px;
-	left:0;/* icon改到左侧 */
-}
-.modal ion-content .item-content{
-
-}
-
-
-
-/*菜谱详情页*/
-.menu_img{
-  width: 100%;
-  height: 280px;
-}
-.menu_img img{
-  width: 100%;
-  height: 100%;
-}
-ion-content.menu_detail{
+.classification .menu-panel {
   background: #fff;
 }
-.menu_detail .content{
-  padding:14px 14px 0 14px;
-}
-.menu_name{
-  border-bottom: 1px solid #e5e5e3;
-  font-family: "微软雅黑";
-  font-size: 24px;
-  text-align: center;
-  color: #3d3d36;
-}
-.menu_name h2{
 
-}
-.menu_name p{
-  font-size: 12px;
-
-}
-.author{
-  overflow: hidden;
-  padding-top: 14px;
-}
-.author img{
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  background: pink;
-  float: left;
-}
-.author p{
-  float: left;
-  line-height: 60px;
-  padding-left: 10px;
-
-}
-.desc{
-  line-height: 1.5;
-}
-.material h4,.step h4{
-  font-size: 18px;
-  font-weight: 800;
-  border-bottom: 1px solid #e5e5e3;
-  padding-bottom:10px;
-}
-.material ul li{
-  border-bottom: 1px solid #e5e5e3;
-  line-height: 24px;
-  padding:5px 0;
-  color: #3d3d36;
-}
-.material ul li span{
-  display: inline-block;
-  width: 50%;
-  text-align: left;
-}
-.step div{
-  margin-top: 20px;
-}
-.step div img{
-  margin-bottom: 10px;
-}
-.step div p {
-  line-height: 1.5;
-  color: #3d3d36;
+.classification .menu-panel .col {
+  position: relative;
 }
 
-.production{
-  border-top:1px solid #e4e4e4;
-  padding-top: 10px;
+.classification h1 {
+  color: #808080;
+  font-size: 20px;
+  margin: 5px 0 5px 10px;
+  font-weight: bold;
 }
-.production h3{
-  font-size: 18px;
-  font-family: "微软雅黑";
-}
-.production .show{
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap; /*不换行*/
-  height: 300px;
-  width: 400px;
-}
-.production .show li{
-  display: inline-block;
-  width: 200px;
-  height: 300px;
-  border:1px solid #e4e4e4;
-  text-align: center;
-  margin:0 10px;
-}
-.production .show li>img{
-  height: 200px;
-  background: pink;
-}
-.production .show li .auth img{
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  background: pink;
-  float: left;
-  margin-left: 20px;
-}
-.production .show li .auth p{
-  margin-left: 10px;
-  float: left;
-  margin-left: 20px;
-  line-height: 30px;
-}
-.upload{
-  width: 100%;
-  height: 50px;
-  margin-top: 20px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 16px;
-  background: #f96650;
+
+.classification .menu-panel .col span {
+  position: absolute;
+  bottom: 15px;
   color: #fff;
-  font-family: "微软雅黑";
+  display: inline-block;
+  margin-left: 24%;
+
 }
+
+.menu-panel .col-25 {
+  float: left;
+}
+
+.classification .mask:before {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  content: "";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  height: 15%;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+article {
+  display: block;
+  width: inherit;
+  height: inherit;
+  position: relative;
+}
+
 /* 字体图标 */
 @font-face {
-	font-family: 'iconfont';
-    src: url('../font/iconfont.eot'); /* IE9*/
-    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
-    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot'); /* IE9*/
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../font/iconfont.woff') format('woff'), /* chrome、firefox */ url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
-.iconfont{
-    font-family:"iconfont" !important;
-    font-size:16px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
-.icon-shezhi:before { content: "\e604"; font-size: 18px;}
-.icon-fangzi:before { content: "\e601"; line-height: 1.2;font-size: 25px;}
-.icon-setting:before { content: "\e600"; line-height: 0.8;font-size: 40px;}
-.icon-caipu:before { content: "\e602"; line-height: 0.8;font-size: 40px;}
-.icon-chufang:before { content: "\e603"; line-height: 1.2;font-size: 25px;}
-.icon-basketorganicfoodv1codropswojciechzasina:before { content: "\e7c3"; line-height: 1;font-size: 24px;} /*菜篮*/
-.icon-wode:before { content: "\e62c";line-height: 1; }
+
+.icon-shezhi:before {
+  content: "\e604";
+  font-size: 18px;
+}
+
+.icon-fangzi:before {
+  content: "\e601";
+  line-height: 1.2;
+  font-size: 25px;
+}
+
+.icon-setting:before {
+  content: "\e600";
+  line-height: 0.8;
+  font-size: 40px;
+}
+
+.icon-caipu:before {
+  content: "\e602";
+  line-height: 0.8;
+  font-size: 40px;
+}
+
+.icon-chufang:before {
+  content: "\e603";
+  line-height: 1.2;
+  font-size: 25px;
+}
+
+.icon-basketorganicfoodv1codropswojciechzasina:before {
+  content: "\e7c3";
+  line-height: 1;
+  font-size: 24px;
+}
+
+/*菜篮*/
+.icon-wode:before {
+  content: "\e62c";
+  line-height: 1;
+}
