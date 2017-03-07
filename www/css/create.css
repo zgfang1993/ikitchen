@@ -119,7 +119,25 @@ ion-item input {
   position: absolute;
   right: 0;
 }
-
+.tag{
+  padding: 0 10px;
+}
+.create_detail .tag li{
+  height:40px;
+  line-height: 40px;
+  position: relative;
+}
+.create_detail .tag li span{
+  line-height: 40px;
+}
+.create_detail .tag li  .ion-ios-arrow-right{
+  float: right;
+  font-size: 20px;
+  color: #cccccc;
+}
+.create_detail .tag li label{
+float: right;
+}
 .create_detail .publish{
   width: 100%;
   height: 45px;
