@@ -4,6 +4,7 @@
     <list default="true" id="6e703163-7a46-4d70-80c5-d7b500e58971" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/create.css" afterPath="$PROJECT_DIR$/www/css/create.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/create-detail.html" afterPath="$PROJECT_DIR$/www/templates/create-detail.html" />
     </list>
     <ignored path="ikitchen.iws" />
@@ -54,8 +55,8 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="328" column="29" selection-start-line="328" selection-start-column="29" selection-end-line="328" selection-end-column="29" />
+            <state relative-caret-position="250">
+              <caret line="328" column="6" selection-start-line="328" selection-start-column="6" selection-end-line="328" selection-end-column="6" />
               <folding>
                 <element signature="e#101#270#0" expanded="false" />
                 <element signature="e#323#619#0" expanded="false" />
@@ -69,34 +70,32 @@
                 <element signature="e#3732#4471#0" expanded="false" />
                 <element signature="e#4601#7205#0" expanded="false" />
                 <element signature="e#7313#8050#0" expanded="false" />
-                <element signature="e#8730#9004#0" expanded="false" />
+                <element signature="e#9084#9358#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create-detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create-detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/templates/create-detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state relative-caret-position="191">
+              <caret line="24" column="29" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="29" />
               <folding>
                 <element signature="n#div#0;n#ion-content#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-                <element signature="n#ion-list#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#1;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#1;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#ion-content#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="create.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/css/create.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="127" column="20" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="20" />
+            <state relative-caret-position="380">
+              <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -166,9 +165,9 @@
         <option value="$PROJECT_DIR$/ionic.config.json" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/www/css/detail.css" />
+        <option value="$PROJECT_DIR$/www/templates/create-detail.html" />
         <option value="$PROJECT_DIR$/www/js/controllers.js" />
         <option value="$PROJECT_DIR$/www/css/create.css" />
-        <option value="$PROJECT_DIR$/www/templates/create-detail.html" />
       </list>
     </option>
   </component>
@@ -372,7 +371,7 @@
       <workItem from="1487424861396" duration="30755000" />
       <workItem from="1487940989774" duration="28633000" />
       <workItem from="1488095728622" duration="11150000" />
-      <workItem from="1488767785812" duration="14091000" />
+      <workItem from="1488767785812" duration="19253000" />
     </task>
     <task id="LOCAL-00001" summary="1. 菜谱分类 可以访问后台数据&#10;2. 修复返回功能&#10;3. 添加icon">
       <created>1486889702551</created>
@@ -444,11 +443,25 @@
       <option name="project" value="LOCAL" />
       <updated>1488900096610</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="1. 新增创建菜铺详情页面">
+      <created>1488902100101</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1488902100101</updated>
+    </task>
+    <task id="LOCAL-00012" summary="1. 新增创建菜铺详情页面">
+      <created>1488959063936</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1488959063936</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169656000" />
+    <option name="totallyTimeSpent" value="174818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -570,7 +583,7 @@
             <element signature="e#3732#4471#0" expanded="false" />
             <element signature="e#4601#7205#0" expanded="false" />
             <element signature="e#7313#8050#0" expanded="false" />
-            <element signature="e#8730#9004#0" expanded="false" />
+            <element signature="e#9084#9358#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -641,7 +654,7 @@
             <element signature="e#3732#4471#0" expanded="false" />
             <element signature="e#4601#7205#0" expanded="false" />
             <element signature="e#7313#8050#0" expanded="false" />
-            <element signature="e#8730#9004#0" expanded="false" />
+            <element signature="e#9084#9358#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -663,7 +676,7 @@
             <element signature="e#3732#4471#0" expanded="false" />
             <element signature="e#4601#7205#0" expanded="false" />
             <element signature="e#7313#8050#0" expanded="false" />
-            <element signature="e#8730#9004#0" expanded="false" />
+            <element signature="e#9084#9358#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -935,8 +948,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="328" column="29" selection-start-line="328" selection-start-column="29" selection-end-line="328" selection-end-column="29" />
+        <state relative-caret-position="250">
+          <caret line="328" column="6" selection-start-line="328" selection-start-column="6" selection-end-line="328" selection-end-column="6" />
           <folding>
             <element signature="e#101#270#0" expanded="false" />
             <element signature="e#323#619#0" expanded="false" />
@@ -950,31 +963,29 @@
             <element signature="e#3732#4471#0" expanded="false" />
             <element signature="e#4601#7205#0" expanded="false" />
             <element signature="e#7313#8050#0" expanded="false" />
-            <element signature="e#8730#9004#0" expanded="false" />
+            <element signature="e#9084#9358#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/templates/create-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#ion-content#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#ion-content#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/css/create.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="127" column="20" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="20" />
+        <state relative-caret-position="380">
+          <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/create-detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-          <folding>
-            <element signature="n#div#0;n#ion-content#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-            <element signature="n#ion-list#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#1;n#ion-content#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

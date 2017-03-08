@@ -98,6 +98,9 @@ ion-item input {
 }
 
 /*插件*/
+.create_detail ion-delete-button,.create_detail ion-reorder-button{
+  min-height: 34px;
+}
 .ion-minus-circled {
   height: 12px;
 }

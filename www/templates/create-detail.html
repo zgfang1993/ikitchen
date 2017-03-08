@@ -15,28 +15,21 @@
     <textarea placeholder="输入这道美食背后的故事"></textarea>
     <div class="material">
       <h4>用料</h4>
-      <ul>
-        <li>
-          <input type="text" placeholder="食材：如鸡蛋">
-          <input type="text" placeholder = "用量：如1个">
-        </li>
-      </ul>
-
       <!--插件-->
       <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
-        <ion-item ng-repeat="item in items" item="item" class="item-remove-animate">
-          <input type="text" placeholder="食材：如鸡蛋" ng-model="item.material">
-          <input type="text" placeholder = "用量：如1个" ng-model="item.amount">
+        <ion-item ng-repeat="material in materials" item="material" class="item-remove-animate">
+          <input type="text" placeholder="食材：如鸡蛋" ng-model="material.material">
+          <input type="text" placeholder = "用量：如1个" ng-model="material.amount">
 
-          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"> </ion-delete-button>
-          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(material)"> </ion-delete-button>
+          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(material, $fromIndex, $toIndex)"></ion-reorder-button>
         </ion-item>
       </ion-list>
       <!--插件 end-->
 
       <div class="add">
-        <a class="" >再增加一行</a>
-        <a class="adj_sure" ng-click="data.showDelete = !data.showDelete; data.showReorder = !data.showReorder">调整完成</a>
+        <a class="" ng-click="addMore()">再增加一行</a>
+        <a class="adj_sure" ng-bind="data.adj" ng-click="adjItem()" ></a>
       </div>
     </div>
 
@@ -64,16 +57,20 @@
 	</div>
 
   <div class="tag">
-    <ul>
-      <li>
-        <span>推荐至分类</span>
-        <a class="ion-ios-arrow-right" href="#"></a>
+    <ul class="list">
+      <li class="item item-toggle menutag">
+        推荐至分类
+        <label class="toggle toggle-positive">
+          <i class="icon ion-chevron-right"></i>
+        </label>
       </li>
-      <li>
-        <span>独家菜谱</span>
-        <label class="toggle toggle-calm disable-user-behavior">
-          <input type="checkbox" ng-model="airplaneMode" class="ng-pristine ng-untouched ng-valid ng-empty" style="">
-          <div class="track"><div class="handle"></div></div>
+      <li class="item item-toggle scoop">
+        独家菜谱
+        <label class="toggle toggle-balanced">
+          <input type="checkbox" checked="">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
         </label>
       </li>
     </ul>

@@ -319,16 +319,25 @@ angular.module('starter.controllers', [])
     $scope.menu_name = $stateParams.menu_name;
     /*插件*/
     $scope.data = {
-      showDelete: false //显示delete
+      showDelete: false, //显示delete
+      adj:"调整用料"
     };
     //删除
-    $scope.onItemDelete = function(item) {
-      $scope.items.splice($scope.items.indexOf(item), 1);
+    $scope.onItemDelete = function(material) {
+      $scope.materials.splice($scope.materials.indexOf(material), 1);
     };
-    $scope.items = [
+    $scope.materials = [
       { material: "",amount:"" }
     ];
     /*插件*/
+    $scope.addMore = function () {
+      $scope.materials.push({ material: "",amount:"" });
+    }
+    $scope.adjItem = function () {
+      $scope.data.adj = $scope.data.showDelete?"调整用料":"调整完订单成";
+      $scope.data.showDelete = !$scope.data.showDelete;
+      $scope.data.showReorder = !$scope.data.showReorder
+    }
   })
 
 
