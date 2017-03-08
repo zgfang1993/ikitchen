@@ -53,13 +53,17 @@
 .create_detail .box {
   padding: 10px;
 }
+.create_detail .box .title{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eae7e7;
+}
 
-.create_detail .box > input {
+.create_detail .box .title input {
   width: 100%;
   text-align: center;
   margin: 0 auto;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eae7e7;
+  font-size: 24px;
+
 }
 
 .create_detail .box textarea {
