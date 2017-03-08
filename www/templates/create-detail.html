@@ -13,45 +13,44 @@
 	<div class="box">
     <input type="text" ng-model="name">
     <textarea placeholder="输入这道美食背后的故事"></textarea>
+    <!--用料-->
     <div class="material">
       <h4>用料</h4>
-      <!--插件-->
-      <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+      <ion-list show-delete="data.mshowDeleteReorder" show-reorder="data.mshowDeleteReorder">
         <ion-item ng-repeat="material in materials" item="material" class="item-remove-animate">
-          <input type="text" placeholder="食材：如鸡蛋" ng-model="material.material">
-          <input type="text" placeholder = "用量：如1个" ng-model="material.amount">
+          <input type="text" placeholder="食材：如鸡蛋" ng-model="material.material" ng-style="mate">
+          <input type="text" placeholder = "用量：如1个" ng-model="material.amount"  ng-style="mate">
 
-          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(material)"> </ion-delete-button>
-          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(material, $fromIndex, $toIndex)"></ion-reorder-button>
+          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(material,'materials')"> </ion-delete-button>
+          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(material, $fromIndex, $toIndex,'materials')"></ion-reorder-button>
         </ion-item>
       </ion-list>
-      <!--插件 end-->
 
       <div class="add">
         <a class="" ng-click="addMore()">再增加一行</a>
-        <a class="adj_sure" ng-bind="data.adj" ng-click="adjItem()" ></a>
+        <a class="adj" ng-bind="data.adj" ng-click="adjItem()" ></a>
       </div>
     </div>
+    <!--插件 end-->
 
     <div class="steps">
       <h4>做法</h4>
-      <div class="step1">
-        <h4>步骤一</h4>
-        <div class="">
-          + 步骤图
-        </div>
-        <input type="text" placeholder="添加步骤说明">
-      </div>
-      <div class="step2">
-        <h4>步骤二</h4>
-        <div class="">
-          + 步骤图
-        </div>
-        <input type="text" placeholder="添加步骤说明">
-      </div>
+      <ion-list show-delete="data.showDeleteReorder" show-reorder="data.showDeleteReorder">
+        <ion-item ng-repeat="step in steps" item="step" class="item-remove-animate">
+          <h5 ng-bind="'步骤'+{{$index+1}}"></h5>
+          <div class="stepImg" src="{{step.img}}" ng-style="stepImg">
+            + 步骤图
+          </div>
+          <input type="text" placeholder="添加步骤说明" ng-model="step.desc">
+
+          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(step,'steps')"> </ion-delete-button>
+          <ion-reorder-button class="ion-navicon" on-reorder="moveItem(step, $fromIndex, $toIndex,'steps')"></ion-reorder-button>
+        </ion-item>
+      </ion-list>
+
       <div class="add">
-        <a class="" >再增加一步</a>
-        <a class="adj_sure" ng-click="data.showDelete = !data.showDelete; data.showReorder = !data.showReorder">调整步骤</a>
+        <a class="" ng-click="addStep()">再增加一步</a>
+        <a class="adj" ng-click="adjStep()">调整步骤</a>
       </div>
     </div>
 	</div>

@@ -317,33 +317,59 @@ angular.module('starter.controllers',[])
   //创建菜谱详情
   .controller('CreateDetailCtrl', function ($scope,$stateParams) {
     $scope.menu_name = $stateParams.menu_name;
-    /*用料 删除 移动 新增*/
-    $scope.data = {
-      showDelete: false, //显示delete
-      adj:"调整用料"
-    };
-      //删除
-    $scope.onItemDelete = function(material) {
-      $scope.materials.splice($scope.materials.indexOf(material), 1);
-    };
     $scope.materials = [
       { material: "",amount:"" }
     ];
+    $scope.steps = [
+      { id:0,desc: "",img:"" },
+      { id:1,desc: "",img:"" }
+    ];
+    /*用料 删除 移动 新增*/
+    $scope.data = {
+      mshowDeleteReorder: false, //显示delete
+      showDeleteReorder:false,
+      adj:"调整用料",
+      adjstep:"调整步骤"
+    };
+    //删除
+    $scope.onItemDelete = function(material,str) {
+    /*  if(str == "material"){
+        $scope.materials.splice($scope.materials.indexOf(material), 1);
+      }
+      if(str = 'step'){
+        $scope.materials.splice($scope.materials.indexOf(material), 1);
+      }*/
+      $scope[str].splice($scope[str].indexOf(str), 1);
+    };
       //拖拽 移动排序
-    $scope.moveItem = function(item, fromIndex, toIndex) {
-      $scope.materials.splice(fromIndex, 1);
-      $scope.materials  .splice(toIndex, 0, item);
+    $scope.moveItem = function(item, fromIndex, toIndex,str) {
+      $scope[str].splice(fromIndex, 1);
+      $scope[str].splice(toIndex, 0, item);
     };
 
     $scope.addMore = function () {
       $scope.materials.push({ material: "",amount:"" });
-    }
+    };
     $scope.adjItem = function () {
-      $scope.data.adj = $scope.data.showDelete?"调整用料":"调整完成";
-      $scope.data.showDelete = !$scope.data.showDelete;
-      $scope.data.showReorder = !$scope.data.showReorder
-    }
+      $scope.data.adj = $scope.data.mshowDeleteReorder?"调整用料":"调整完成";
+      $scope.data.mshowDeleteReorder = !$scope.data.mshowDeleteReorder;
+      $scope.mate = $scope.data.mshowDeleteReorder?{"width" : "40%"}:{"width" : "50%"};
+    };
     /*用料 删除 移动 新增 end*/
+
+    /*做法 删除 移动 新增*/
+
+    $scope.addStep = function () {
+      $scope.steps.push({ id:$scope.steps.length,desc: "",img:"" });
+    };
+    $scope.adjStep = function () {
+      $scope.data.adjstep = $scope.data.showDeleteReorder?"调整步骤":"调整完成";
+      $scope.data.showDeleteReorder = !$scope.data.showDeleteReorder;
+     // $scope.data.stepShowReorder = !$scope.data.stepShowReorder;
+      $scope.stepImg = $scope.data.showDeleteReorder?{"width" : "60%"}:{"width" : "100%"};
+    };
+    /*做法 删除 移动 新增 end*/
+
 
 
 
