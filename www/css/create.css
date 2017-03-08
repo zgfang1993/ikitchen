@@ -119,24 +119,21 @@ ion-item input {
   position: absolute;
   right: 0;
 }
-.tag{
-  padding: 0 10px;
+.create_detail .tag  .menutag label{
+  top:16px;
 }
-.create_detail .tag li{
-  height:40px;
-  line-height: 40px;
-  position: relative;
+.create_detail .tag .scoop{
+  height: 80px;
 }
-.create_detail .tag li span{
-  line-height: 40px;
+.create_detail .tag .scoop label{
+  top:25px;
 }
-.create_detail .tag li  .ion-ios-arrow-right{
-  float: right;
-  font-size: 20px;
-  color: #cccccc;
-}
-.create_detail .tag li label{
-float: right;
+.create_detail .tag .scoop:before{
+  content: "仅在爱厨房发布，拥有特殊标识";
+  font-size: 12px;
+  position: absolute;
+  top:38px;
+  color: #9e9e9e;
 }
 .create_detail .publish{
   width: 100%;
@@ -146,4 +143,5 @@ float: right;
   background: #ff726d;
   color: #fff;
   font-size: 16px;
+  margin-top:20px;
 }
