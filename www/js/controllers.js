@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers',[])
   .directive('autofocus', ['$timeout', function ($timeout) {
     return {
       restrict: 'A',
@@ -317,27 +317,36 @@ angular.module('starter.controllers', [])
   //创建菜谱详情
   .controller('CreateDetailCtrl', function ($scope,$stateParams) {
     $scope.menu_name = $stateParams.menu_name;
-    /*插件*/
+    /*用料 删除 移动 新增*/
     $scope.data = {
       showDelete: false, //显示delete
       adj:"调整用料"
     };
-    //删除
+      //删除
     $scope.onItemDelete = function(material) {
       $scope.materials.splice($scope.materials.indexOf(material), 1);
     };
     $scope.materials = [
       { material: "",amount:"" }
     ];
-    /*插件*/
+      //拖拽 移动排序
+    $scope.moveItem = function(item, fromIndex, toIndex) {
+      $scope.materials.splice(fromIndex, 1);
+      $scope.materials  .splice(toIndex, 0, item);
+    };
+
     $scope.addMore = function () {
       $scope.materials.push({ material: "",amount:"" });
     }
     $scope.adjItem = function () {
-      $scope.data.adj = $scope.data.showDelete?"调整用料":"调整完订单成";
+      $scope.data.adj = $scope.data.showDelete?"调整用料":"调整完成";
       $scope.data.showDelete = !$scope.data.showDelete;
       $scope.data.showReorder = !$scope.data.showReorder
     }
+    /*用料 删除 移动 新增 end*/
+
+
+
   })
 
 
