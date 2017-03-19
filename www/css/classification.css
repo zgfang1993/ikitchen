@@ -1,0 +1,57 @@
+/*
+ *菜谱分类
+ */
+
+.classification a.cancel {
+  color: #ff726d;
+  text-decoration: none;
+  position: absolute;
+  left: 10px;
+}
+
+.classification .menu-panel {
+  background: #fff;
+}
+
+.classification .menu-panel .col {
+  position: relative;
+}
+
+.classification h1 {
+  color: #808080;
+  font-size: 20px;
+  margin: 5px 0 5px 10px;
+  font-weight: bold;
+}
+
+.classification .menu-panel .col span {
+  position: absolute;
+  bottom: 15px;
+  color: #fff;
+  display: inline-block;
+  margin-left: 24%;
+
+}
+
+.menu-panel .col-25 {
+  float: left;
+}
+
+.classification .mask:before {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  content: "";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  height: 15%;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+article {
+  display: block;
+  width: inherit;
+  height: inherit;
+  position: relative;
+}

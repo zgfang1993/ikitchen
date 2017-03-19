@@ -1,8 +1,4 @@
-// Ionic Starter App
-
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -79,13 +75,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       })
       //创建菜谱名
       .state('create-name', {
-        params: {"name": null},
         url: '/create/name',
         templateUrl: 'templates/create-name.html',
         controller: 'CreateNameCtrl'
       })
       //创建菜谱详情
       .state('create-detail', {
+        params: {"menuName": null},
         url: '/create/detail',
         templateUrl: 'templates/create-detail.html',
         controller: 'CreateDetailCtrl'
@@ -119,8 +115,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: 'templates/menu-detail.html',
         controller: 'MenuDetailCtrl'
       });
-
-
 
     $urlRouterProvider.otherwise('/tab/ikitchen');
 

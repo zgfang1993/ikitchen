@@ -68,7 +68,7 @@ angular.module('starter.controllers',[])
     };
     //最近搜索 热门搜索
     $http({
-      url: 'http://120.24.225.232:8090/api/search/hot_recent/',
+      url: 'http://120.24.225.232/api/search/hot_recent/',
       method: 'get',
     }).success(function (data) {
       console.log(data.content);
@@ -82,7 +82,7 @@ angular.module('starter.controllers',[])
       //清空最近搜索
     $scope.clearRecent = function () {
       $http({
-        url: 'http://120.24.225.232:8090/api/search/clear/',
+        url: 'http://120.24.225.232/api/search/clear/',
         method: 'get',
       }).success(function (data) {
         $scope.recent_show = false;
@@ -98,12 +98,12 @@ angular.module('starter.controllers',[])
 
     //搜索框改变时
     $scope.search_change = function () {
-
+console.log($scope.search_val);
       $scope.search_show = $scope.search_val == "" ? false : true;
       var data = {"input": $scope.search_val};
       if ($scope.search_val != "") {
         $http({
-          url: 'http://120.24.225.232:8090/api/search/relate/',
+          url: 'http://120.24.225.232/api/search/relate/',
           method: 'post',
           data: data
         }).success(function (data) {
@@ -123,7 +123,7 @@ angular.module('starter.controllers',[])
       var source = "menu-search";
 
       $http({
-          url: 'http://120.24.225.232:8090/api/search/insert/',
+          url: 'http://120.24.225.232/api/search/insert/',
         method: 'POST',
         data:{"input":val}
       }).success(function (data, header, config, status) {
@@ -151,7 +151,7 @@ angular.module('starter.controllers',[])
    */
   .controller('ClassificationCtrl', function ($scope, $state, $ionicHistory, $http) {
     $http({
-      url: 'http://120.24.225.232:8090/api/menu/all/',
+      url: 'http://120.24.225.232/api/menu/all/',
       method: 'get'
     }).success(function (data) {
       $scope.error = "访问成功啦";
@@ -198,8 +198,8 @@ angular.module('starter.controllers',[])
 
     //根据搜索条件搜索列表
     function listByIdOrKey() {
-      var urlId = 'http://120.24.225.232:8090/api/cookbook/by_menu/?menu=' + search_id;  //根据分类获取列表
-      var urkKey = 'http://120.24.225.232:8090/api/cookbook/by_name/?name=' + search_key;   //根据关键词类获取列表
+      var urlId = 'http://120.24.225.232/api/cookbook/by_menu/?menu=' + search_id;  //根据分类获取列表
+      var urkKey = 'http://120.24.225.232/api/cookbook/by_name/?name=' + search_key;   //根据关键词类获取列表
       var url = search_id ? urlId : urkKey;
 
       $http({
@@ -279,7 +279,7 @@ angular.module('starter.controllers',[])
     var id = $stateParams.id;
     /*加载菜谱详细信息by id*/
     $http({
-      url: 'http://120.24.225.232:8090/api/cookbook/by_cookbook_id/',
+      url: 'http://120.24.225.232/api/cookbook/by_cookbook_id/',
       method: 'POST',
       data:{"id":id}
     }).success(function (data, header, config, status) {
@@ -308,15 +308,21 @@ angular.module('starter.controllers',[])
   })
   //创建菜谱名
   .controller('CreateNameCtrl', function ($scope,$state) {
-    $scope.menuName = "";
+    $scope.data={
+      menuName:""
+    };
     $scope.createDetail = function () {
-      console.log($scope.menuName);
-      $state.go("create-detail",{});
-    }
+      console.log($scope.data.menuName);
+      var param ={
+        "menuName":$scope.data.menuName
+      }
+        $state.go("create-detail",param);
+    };
+
   })
   //创建菜谱详情
   .controller('CreateDetailCtrl', function ($scope,$stateParams) {
-    $scope.menu_name = $stateParams.menu_name;
+    $scope.menuName = $stateParams.menuName;
     $scope.materials = [
       { material: "",amount:"" }
     ];
@@ -324,21 +330,15 @@ angular.module('starter.controllers',[])
       { id:0,desc: "",img:"" },
       { id:1,desc: "",img:"" }
     ];
-    /*用料 删除 移动 新增*/
+    /*用料 做法 删除 移动 新增*/
     $scope.data = {
       mshowDeleteReorder: false, //显示delete
       showDeleteReorder:false,
       adj:"调整用料",
       adjstep:"调整步骤"
     };
-    //删除
+      //删除
     $scope.onItemDelete = function(material,str) {
-    /*  if(str == "material"){
-        $scope.materials.splice($scope.materials.indexOf(material), 1);
-      }
-      if(str = 'step'){
-        $scope.materials.splice($scope.materials.indexOf(material), 1);
-      }*/
       $scope[str].splice($scope[str].indexOf(str), 1);
     };
       //拖拽 移动排序
@@ -346,32 +346,30 @@ angular.module('starter.controllers',[])
       $scope[str].splice(fromIndex, 1);
       $scope[str].splice(toIndex, 0, item);
     };
-
-    $scope.addMore = function () {
-      $scope.materials.push({ material: "",amount:"" });
+      //新增
+    $scope.add = function (str) {
+      if(str == "materials"){
+        $scope[str].push({ material: "",amount:"" });
+      }
+      if(str == "steps") {
+        $scope[str].push({id: $scope.steps.length, desc: "", img: ""});
+      }
     };
-    $scope.adjItem = function () {
-      $scope.data.adj = $scope.data.mshowDeleteReorder?"调整用料":"调整完成";
-      $scope.data.mshowDeleteReorder = !$scope.data.mshowDeleteReorder;
-      $scope.mate = $scope.data.mshowDeleteReorder?{"width" : "40%"}:{"width" : "50%"};
+      //调整
+    $scope.adjust = function (str) {
+      if(str == "materials"){
+        $scope.data.adj = $scope.data.mshowDeleteReorder?"调整用料":"调整完成";
+        $scope.data.mshowDeleteReorder = !$scope.data.mshowDeleteReorder;
+        $scope.mate = $scope.data.mshowDeleteReorder?{"width" : "40%"}:{"width" : "50%"};
+      }
+      if(str == "steps") {
+        $scope.data.adjstep = $scope.data.showDeleteReorder?"调整步骤":"调整完成";
+        $scope.data.showDeleteReorder = !$scope.data.showDeleteReorder;
+        $scope.stepImg = $scope.data.showDeleteReorder?{"width" : "60%"}:{"width" : "100%"};
+      }
+
     };
-    /*用料 删除 移动 新增 end*/
-
-    /*做法 删除 移动 新增*/
-
-    $scope.addStep = function () {
-      $scope.steps.push({ id:$scope.steps.length,desc: "",img:"" });
-    };
-    $scope.adjStep = function () {
-      $scope.data.adjstep = $scope.data.showDeleteReorder?"调整步骤":"调整完成";
-      $scope.data.showDeleteReorder = !$scope.data.showDeleteReorder;
-     // $scope.data.stepShowReorder = !$scope.data.stepShowReorder;
-      $scope.stepImg = $scope.data.showDeleteReorder?{"width" : "60%"}:{"width" : "100%"};
-    };
-    /*做法 删除 移动 新增 end*/
-
-
-
+    /*用料 做法 删除 移动 新增 end*/
 
   })
 
@@ -390,5 +388,5 @@ angular.module('starter.controllers',[])
       //处理响应失败
     });
 
-  })
+  });
 
