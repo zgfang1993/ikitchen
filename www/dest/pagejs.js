@@ -166,20 +166,31 @@ angular.module('starter.controllers',[])
   /*测试*/
   .controller('TestCtrl', function ($scope, $http, $state) {
   })
-  /*首页*/
+  /*
+  * 首页
+  */
   .controller('ikitchenCtrl', function ($scope, $state) {
     $scope.toSearchPage = function () {
       $state.go('menu-search');
     }
   })
-  /*登录*/
+  /*
+   * 登录
+   */
   .controller('loginCtrl', function ($scope, $state) {
 
 
   })
-  //菜谱搜索页面 menu-search
+  /*
+   * 菜谱搜索页面 menu-search
+   */
   .controller('SearchPageCtrl', function ($scope, $state, $ionicHistory, $http) {
     $scope.keys = {};
+    //
+    $scope.del_key = function(){
+      $scope.search_val = "";
+      search_change();
+    }
     //返回上一页
     $scope.returnpage = function () {
       $scope.search_show = false;//隐藏
@@ -218,26 +229,26 @@ angular.module('starter.controllers',[])
     $scope.search_show = false;
 
     //搜索框改变时
-    $scope.search_change = function () {
-console.log($scope.search_val);
-      $scope.search_show = $scope.search_val == "" ? false : true;
-      var data = {"input": $scope.search_val};
-      if ($scope.search_val != "") {
-        $http({
-          url: 'http://120.24.225.232/api/search/relate/',
-          method: 'post',
-          data: data
-        }).success(function (data) {
-          console.log(data.content);
-          $scope.keys = data.content.hot;
-          $scope.my_favorite = data.content.like;
+    $scope.search_change =search_change;
 
-        }).error(function (status) {
+      function search_change() {
+        $scope.search_show = $scope.search_val == "" ? false : true;
+        var data = {"input": $scope.search_val};
+        if ($scope.search_val != "") {
+          $http({
+            url: 'http://120.24.225.232/api/search/relate/',
+            method: 'post',
+            data: data
+          }).success(function (data) {
+            console.log(data.content);
+            $scope.keys = data.content.hot;
+            $scope.my_favorite = data.content.like;
 
-        });
-      }
+          }).error(function (status) {
 
-    };
+          });
+        }
+      };
 
     /*前往搜索相关的菜谱列表*/
     function goToMenuList(val) {
@@ -298,7 +309,9 @@ console.log($scope.search_val);
     };
 
   })
-  //菜谱搜索列表 menu-list
+  /*
+   * 菜谱搜索列表 menu-list
+   */
   .controller('MenuSearchCtrl', function ($scope, $ionicModal, $http, $state, $stateParams, $ionicHistory) {
     console.log($stateParams);
     $scope.sort_active = {"auto": "active", "score": "", "do_num": ""};
@@ -346,40 +359,17 @@ console.log($scope.search_val);
       });
     }
 
-    //本地获取菜谱列表
-    // $http({
-    //   url: 'js/menuLists.json',
-    //   method: 'GET'
-    // }).success(function (data, header, config, status) {
-    //   //响应成功
-    //   $scope.menuLists = data
-    // }).error(function (data, header, config, status) {
-    //   console.log('sss');
-    //   //处理响应失败
-    // });
-    //end
+    $scope.focus_search = function () {
+      $state.go("menu-search");
+    }
 
-    /* $scope.toMenuDetail = function(){
-     $state.go('menu-detail');
-     }*/
     //浮动框//
-    $scope.contacts = [
-      {name: 'Gordon Freeman'},
-      {name: 'Barney Calhoun'},
-      {name: 'Lamarr the Headcrab'},
-    ];
-
     $ionicModal.fromTemplateUrl('templates/modal.html', {
       scope: $scope
     }).then(function (modal) {
       $scope.modal = modal;
     });
 
-    $scope.createContact = function (u) {
-      $scope.contacts.push({name: u.firstName + ' ' + u.lastName});
-      $scope.modal.hide();
-    };
-    //浮动框//
     //返回上一页
     $scope.goBack = function () {
       $state.go(source);
@@ -394,7 +384,9 @@ console.log($scope.search_val);
       $state.go("menu-detail", obj);
     }
   })
-  /*菜谱详情页*/
+  /*
+   * 菜谱详情页
+   */
   .controller('MenuDetailCtrl', function ($scope, $http, $stateParams, $state, $ionicHistory) {
     var id = $stateParams.id;
     /*加载菜谱详细信息by id*/
@@ -426,7 +418,9 @@ console.log($scope.search_val);
 
 
   })
-  //创建菜谱名
+  /*
+   * 创建菜谱名
+   */
   .controller('CreateNameCtrl', function ($scope,$state) {
     $scope.data={
       menuName:""
@@ -440,7 +434,9 @@ console.log($scope.search_val);
     };
 
   })
-  //创建菜谱详情
+  /*
+   * 创建菜谱详情
+   */
   .controller('CreateDetailCtrl', function ($scope,$stateParams) {
     $scope.menuName = $stateParams.menuName;
     $scope.materials = [
@@ -494,7 +490,9 @@ console.log($scope.search_val);
   })
 
 
-  /*每周流行菜谱*/
+  /*
+   * 每周流行菜谱
+   */
   .controller('PopulCtrl', function ($scope, $http) {
 
     $http({
