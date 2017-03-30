@@ -604,22 +604,19 @@ ion-content.menulist{
 .menulist .notFound img{
   width: 200px;
 }
-
 /* 模态框 */
 .modal{
   top:60%;
 }
-/* .modal ion-content .item-checkbox{
-	background: #f7f6f1;
-} */
-.radio-content{
+.modal .radio-content{
   height: 40px;
 }
 .modal ion-content .item-content{
-  background: #f7f6f1;
   padding-left: 44px;
   font-size: 14px;
   color:#61605b;
+  line-height: 40px;
+  height: 40px;
 }
 .modal ion-content .radio-icon{
   color:#ff654d;
