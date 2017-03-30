@@ -154,18 +154,17 @@ console.log($scope.search_val);
       url: 'http://120.24.225.232/api/menu/all/',
       method: 'get'
     }).success(function (data) {
-      $scope.error = "访问成功啦";
+     // $scope.error = "访问成功啦";
       $scope.cf_list = data["content"];
       console.log($scope.cf_list);
       $scope.load = function () {
         $('.menu-panel img').css('height', $('.menu-panel img').css('width'));//高度等于宽度
+        $('.menu-panel .cover').css('height', $('.menu-panel img').css('width'));
       };
 
     }).error(function (status) {
-      $scope.error = "访问失败啦" + status.detail;
-      console.log('sss');
+    //  $scope.error = "访问失败啦" + status.detail;
       console.log(status.detail);
-      //处理响应失败
     });
     //相应分类的菜谱列表页
     $scope.goMeneList = function (id,name) {
